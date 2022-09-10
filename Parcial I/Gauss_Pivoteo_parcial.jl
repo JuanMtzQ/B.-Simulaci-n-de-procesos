@@ -42,13 +42,6 @@ function GaussPivoteoParcial(A, b)
         end
     end
 
-    #=
-    println("Matriz con ceros inferiores")
-    println(Ap)
-    println("\nVector de b")
-    println(bp)
-    =#
-    
     # Sustitucion hacia atrás para encontrar los valores de x
     x[n] = bp[n] / Ap[n, n] # Solución de xn
     for i = n-1:-1:1 # Recorre la matriz desde el penultimo renglon hasta el primero
