@@ -1,6 +1,6 @@
 A = [3 -2 5 0; 4 5 8 1; 1 1 2 1; 2 7 6 5]
 b = [2; 4; 5; 7]
-x = zeros(n)
+n = length(b)
 
 function Gauss(A, b)
     Ap = float(copy(A)) # Copia flotante para evitar que realice cambios sobre el original
@@ -20,23 +20,26 @@ function Gauss(A, b)
             bp[i] = bp[k] - bp[i]*factor
         end
     end
+    
+    #=
+    println("Matriz con ceros inferiores")
+    println(Ap)
+    println("\nVector de b")
+    println(bp)
+    =#
+
     # Sustitucion hacia atrás para encontrar los valores de x
     # Este proceso falla 
-    x[n] = b[n] / Ap[n, n]
-    for i = n-1:-1:1
-        sum_ax = 0.0
-        for j = (i+1):n
+    x[n] = bp[n] / Ap[n, n] # Solución de xn
+    for i = n-1:-1:1 # Recorre la matriz desde el penultimo renglon hasta el primero
+        sum_ax = 0.0 
+        for j = i+1:n #  
             sum_ax = sum_ax + Ap[i, j]*x[j]
         end
-        x[i] = (b[i] - sum_ax)/Ap[i,i]
+        x[i] = (bp[i] - sum_ax)/Ap[i,i]
     end 
-    return Ap, bp, x
+    println("\nSolucion de x[i]")
+    println(x)
 end
 
-A, b, x = Gauss(A, b)
-println("Matriz con ceros inferiores")
-println(A)
-println("\nVector de b")
-println(b)
-println("\nSolucion")
-println(x)
+Gauss(A, b)
