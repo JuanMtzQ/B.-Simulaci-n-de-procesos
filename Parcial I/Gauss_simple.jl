@@ -1,6 +1,5 @@
 A = [3 -2 5 0; 4 5 8 1; 1 1 2 1; 2 7 6 5]
 b = [2; 4; 5; 7]
-n = length(b)
 
 function Gauss(A, b)
     Ap = float(copy(A)) # Copia flotante para evitar que realice cambios sobre el original
@@ -28,8 +27,7 @@ function Gauss(A, b)
     println(bp)
     =#
 
-    # Sustitucion hacia atrás para encontrar los valores de x
-    # Este proceso falla 
+    # Sustitucion hacia atrás para encontrar los valores de x 
     x[n] = bp[n] / Ap[n, n] # Solución de xn
     for i = n-1:-1:1 # Recorre la matriz desde el penultimo renglon hasta el primero
         sum_ax = 0.0 
@@ -38,8 +36,11 @@ function Gauss(A, b)
         end
         x[i] = (bp[i] - sum_ax)/Ap[i,i]
     end 
+    #=
     println("\nSolucion de x[i]")
     println(x)
+    =#
+    return x
 end
 
-Gauss(A, b)
+println(Gauss(A, b))

@@ -14,7 +14,6 @@ function GaussJordan(A, b)
     Ap = float(copy(A)) # Copia flotante para evitar que realice cambios sobre el original
     bp = float(copy(b))
     n = length(b) # Tamaño de la matriz n x n
-    x = zeros(n)
     for k = 1:n # Indexacion del primer renglon con sus columnas
 
         # Pivoteo parcial
@@ -49,10 +48,13 @@ function GaussJordan(A, b)
             bp[i] = bp[i] - bp[k]*factor
         end
     end
+    #=
     println("Matriz identidad")
     println(Ap)
     println("Solucion x[i]")
     println(bp)
+    =#
+    return bp
 end
 
 GaussJordan(A, b)

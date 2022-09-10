@@ -1,13 +1,10 @@
-
 A = [0 7 -1 3 1; 0 3 4 1 7; 6 2 0 2 -1; 2 1 2 0 2; 3 4 1 -2 1]
 b = [5; 7; 2; 3; 4]
-
 
 #=
 A = [3 -2 5 0; 4 5 8 1; 1 1 2 1; 2 7 6 5]
 b = [2; 4; 5; 7]
 =#
-
 function GaussPivoteoParcial(A, b)
     Ap = float(copy(A)) # Copia flotante para evitar que realice cambios sobre el original
     bp = float(copy(b))
@@ -51,8 +48,11 @@ function GaussPivoteoParcial(A, b)
         end
         x[i] = (bp[i] - sum_ax)/Ap[i,i]
     end 
+    #=
     println("\nSolucion de x[i]")
     println(x)
+    =#
+    return x
 end
 
 GaussPivoteoParcial(A, b)
